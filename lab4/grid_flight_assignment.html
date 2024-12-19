@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles/style.css">
+    <title>Полетное задание</title>
+</head>
+
+<!-- СТРАНИЧКА С ПОЛЕТНЫМ ЗАДАНИЕМ, ОПИСАНИЕ ЕГО НУЖНОСТИ В ГРИДАХ, ПРИМЕР ЗАПИСИ ПАРАМЕТРОВ ПОЛЕТНОГО ЗАДАНИЯ -->
+
+<body>
+    
+    <div class="nav">
+        <a href="index.html">О программе</a>
+        <a href="prog_realization.html">Программная реализация</a>
+        <a href="method.html">Метод "туда-обратно"</a>
+        <a href="results.html">Результаты</a>
+        <a href="flexbox_uavs.html">Виды БПЛА</a>
+        <a class="active" href="grid_flight_assignment.html">Полетное задание</a>
+    </div>
+
+    <h2 style="text-align: center; font-size: 40px;">Назначение полетного задания</h2>
+
+    <!-- ВЕРСТКА GRID -->
+
+    <div class="container">
+        <div class="grid-container">
+            <div class="box-discription">
+                <h2>Определение целей полета</h2>
+                <p>Полетное задание четко формулирует цели и задачи, которые необходимо достичь во время полета, что помогает избежать неопределенности и обеспечивает фокусировку на ключевых аспектах миссии.</p>
+            </div>
+            <div class="box-discription">
+                <h2>Безопасность</h2>
+                <p>Описание маршрута, высоты и условий полета помогает обеспечить безопасность как для оператора, так и для окружающих. Это включает в себя избегание запрещенных зон и учет погодных условий.</p>
+            </div>
+            <div class="box-discription">
+                <h2>Эффективное использование ресурсов</h2>
+                <p>Полетное задание позволяет оптимизировать использование топлива, времени и других ресурсов, что особенно важно для коммерческих операций или длительных миссий.</p>
+            </div>
+            <div class="box-discription">
+                <h2>Координация с другими службами</h2>
+                <p>Полетные задания часто требуют согласования с различными службами (например, авиационными властями, службами безопасности и т.д.), что помогает избежать конфликтов и обеспечивает согласованность действий.</p>
+            </div>
+            <div class="box-discription">
+                <h2>Документирование и отчетность</h2>
+                <p>Полетное задание служит официальным документом, который может быть использован для отчетности и анализа после выполнения полета, включая оценку успешности выполнения задач.</p>
+            </div>
+            <div class="box-discription">
+                <h2>Обучение и подготовка</h2>
+                <p>Для новых пилотов и операторов полетное задание предоставляет четкие инструкции и руководства, что способствует более эффективному обучению и подготовке к выполнению реальных задач.</p>
+            </div>
+            <div class="box-discription">
+                <h2>Анализ рисков</h2>
+                <p>При составлении полетного задания можно провести анализ потенциальных рисков и разработать стратегии их минимизации, что повышает общую безопасность полета.</p>
+            </div>
+            <div class="box-discription">
+                <h2>Учет законодательных требований</h2>
+                <p>Полетные задания помогают соблюдать все необходимые законодательные и регуляторные требования, включая лицензирование, регистрацию воздушных судов и соблюдение правил воздушного движения.</p>
+            </div>
+            <div class="box-discription">
+                <h2>Поддержка в экстренных ситуациях</h2>
+                <p>Наличие четкого плана полета позволяет быстро реагировать на непредвиденные обстоятельства или аварийные ситуации, обеспечивая более эффективное управление кризисными ситуациями.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ОТПРАВКА ПОСТ ЗАПРОСА НА СЕРВЕР -->
+    <!-- ФОРМА  (ВРЕМЯ ПОЛЕТА, СКОРОСТЬ ПОЛЕТА, ВЫСОТА ПОЛЕТА, ПОГОДНЫЕ УСЛОВИЯ, КОЛИЧЕСТВО ПРЕПЯТСТВИЙ) -->
+
+    <h1 class="label-post">Отправка полетного задания</h1>
+
+    <!-- ТЕКСТИК ДЛЯ ПОНИМАНИЯ КАК ЗАПОЛНЯТЬ ФОРМУ -->
+
+    <div class="instruction">
+        <p style="text-align: center;">Перед записью данных в полетное задание предлагаю ознакомиться с его атрибутами и их назначением.</p>
+        <h2>Время полета</h2>
+        <p>Время полета нужно указывать в часах. Число должно быть целым, чаще всего полетное задание длится от 1 часа до двух дней (48 часов). Будем придерживаться этого.</p>
+        <h2>Скорость полета</h2>
+        <p>Скорость полета полностью зависит от типа БПЛА. Минимальная скорость, которую может развить БПЛА - 10 км/ч, а максимальная - 60 км/ч.</p>
+        <h2>Высота полета</h2>
+        <p>Высота полета зависит от типа задания. Учитывая законы нашей страны, предположим, что минимальная высота полета - 10 метров, максимальная - 150 метров.</p>
+        <h2>Погодные условия</h2>
+        <p>Данный пункт необходим, чтобы оператор БПЛА описал погодные условия в настоящий момент времени. Здесь можно указать различный текст, включая, например, скорость ветра, или некоторые предупреждения.</p>
+        <h2>Количество препятствий</h2>
+        <p>Препятствий может и не быть. Для этого необходимо указать 0. Если препятствия есть, то ограничимся 25 объектами на карте.</p>
+    </div>
+
+    <!-- САМА ФОРМА -->
+
+    <form id="flightAssignmentForm" method="post">
+        <label for="flightAssignmentTime">Время полета:</label>
+        <input type="number" id="flightAssignmentTime" name="flightAssignmentTime" placeholder="В часах" required>
+        <span class="error" id="timeError"></span>
+
+        <label for="flightAssignmentSpeed">Скорость полета:</label>
+        <input type="number" step="any" id="flightAssignmentSpeed" name="flightAssignmentSpeed" placeholder="В км/ч" required>
+        <span class="error" id="speedError"></span>
+
+        <label for="flightAssignmentHeight">Высота полета:</label>
+        <input type="number" id="flightAssignmentHeight" name="flightAssignmentHeight" placeholder="В метрах" required>
+        <span class="error" id="heightError"></span>
+
+        <label for="flightAssignmentWeather">Погодные условия:</label>
+        <input type="text" id="flightAssignmentWeather" name="flightAssignmentWeather" placeholder="Текст" required>
+        <span class="error" id="weatherError"></span>
+
+        <label for="flightAssignmentObjects">Количество препятствий:</label>
+        <input type="number" id="flightAssignmentObjects" name="flightAssignmentObjects" placeholder="Количество" required>
+        <span class="error" id="objectsError"></span>
+
+        <button class="button-flightAssignment" type="submit">Отправить полетное задание</button>
+    </form>
+
+    <!-- СОБЫТЕЙНАЯ МОДЕЛЬ JavaScript -->
+    
+    <script>
+        document.getElementById('flightAssignmentForm').addEventListener('submit', function(event) // работаем с формой при ее отправке с помощью обработчика событий
+        {
+            event.preventDefault();
+            let isValid = true; // для проверки заполнения форм
+            
+            // СБРОС ОШИБОК
+            document.getElementById('timeError').textContent = '';
+            document.getElementById('speedError').textContent = '';
+            document.getElementById('heightError').textContent = '';
+            document.getElementById('weatherError').textContent = '';
+            document.getElementById('objectsError').textContent = '';
+
+            // ПРОВЕРОЧКИ ВРЕМЕНИ, СКОРОСТИ, ВЫСОТЫ, ПОГОДНЫХ УСЛОВИЙ, ПРЕПЯТСТВИЙ
+            // ВРЕМЯ (ЧТО БУДЕТ ПРОВЕРЕНО: ЦЕЛОЕ ЧИСЛО ОТ 1 ДО 48 ЧАСОВ)
+            const flightAssignmentTime = parseFloat(document.getElementById('flightAssignmentTime').value);
+            if (!Number.isInteger(flightAssignmentTime))
+            {
+                document.getElementById('timeError').textContent = 'Время должно быть целым числом!';
+                isValid = false;
+            }
+            else if (flightAssignmentTime < 1 || flightAssignmentTime > 48)
+            {
+                document.getElementById('timeError').textContent = 'Укажите от 1 до 48 часов!';
+                isValid = false;
+            }
+            else
+                document.getElementById('timeError').textContent = '';
+            
+            // СКОРОСТЬ (ЧТО БУДЕТ ПРОВЕРЕНО: ВЕЩЕСТВЕННОЕ ЧИСЛО ОТ 10 ДО 60 КМ/Ч)
+            const flightAssignmentSpeedInput = document.getElementById('flightAssignmentSpeed').value.replace(',', '.');
+            const flightAssignmentSpeed = parseFloat(flightAssignmentSpeedInput);
+            if (isNaN(flightAssignmentSpeed))
+            {
+                document.getElementById('speedError').textContent = 'Скорость должна быть числом!';
+                isValid = false;
+            }
+            else if (flightAssignmentSpeed < 10 || flightAssignmentSpeed > 60)
+            {
+                document.getElementById('speedError').textContent = 'Укажите от 10 до 60 км/ч!';
+                isValid = false;
+            }
+            else
+                document.getElementById('speedError').textContent = '';
+
+            // ВЫСОТА (ЧТО БУДЕТ ПРОВЕРЕНО: ЦЕЛОЕ ЧИСЛО ОТ 10 ДО 150 МЕТРОВ)
+            const flightAssignmentHeight = parseFloat(document.getElementById('flightAssignmentHeight').value);
+            if (!Number.isInteger(flightAssignmentHeight))
+            {
+                document.getElementById('heightError').textContent = 'Высота должна быть целым числом!';
+                isValid = false;
+            }
+            else if (flightAssignmentHeight < 10 || flightAssignmentHeight > 150)
+            {
+                document.getElementById('heightError').textContent = 'Укажите от 10 до 150 метров!';
+                isValid = false;
+            }
+            else
+                document.getElementById('heightError').textContent = '';
+
+            // ПОГОДНЫЕ УСЛОВИЯ (ЧТО БУДЕТ ПРОВЕРЕНО: ЧТО НЕ ПУСТОЕ И ЛЮБОЙ ТЕКСТ)
+            const flightAssignmentWeather = document.getElementById('flightAssignmentWeather').value.trim();
+            if (flightAssignmentWeather === '')
+            {
+                document.getElementById('weatherError').textContent = 'Укажите погодные условия!';
+                isValid = false;
+            }
+            else
+                document.getElementById('weatherError').textContent = '';
+
+            // ПРЕПЯТСТВИЯ (ЧТО БУДЕТ ПРОВЕРЕНО: ЦЕЛОЕ ЧИСЛО ОТ 0 ДО 25)
+            const flightAssignmentObjects = parseFloat(document.getElementById('flightAssignmentObjects').value);
+            if (!Number.isInteger(flightAssignmentObjects))
+            {
+                document.getElementById('objectsError').textContent = 'Количество препятствий должно быть целым числом!';
+                isValid = false;
+            }
+            else if (flightAssignmentObjects < 0 || flightAssignmentObjects > 25)
+            {
+                document.getElementById('objectsError').textContent = 'Укажите от 0 до 25 препятствий!';
+                isValid = false;
+            }
+            else
+                document.getElementById('objectsError').textContent = '';
+            
+            // ЕСЛИ ЗАПОЛНЕНИЕ ОКАЗАЛОСЬ ВЕРНЫМ
+            if (isValid)
+            {
+                // В ДАТУ БУДЕТ ВНЕСЕНЫ ДАННЫЕ С ФОРМЫ
+                const formData = new FormData(this);
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+
+                // ОТПРАВКА ПОЛЕТНОГО ЗАДАНИЯ (В ВИДЕ JSON) НА СЕРВАК
+                fetch('http://127.0.0.1:8000/uav', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                
+                // ПОЛУЧЕНИЕ С СЕРВАКА ОТВЕТА, ЕСЛИ ВСЕ ОКИ - НАПИШЕТСЯ В ЛОГАХ, ИНАЧЕ ОШИБКА
+                .then(response => {
+                    if (!response.ok)
+                    {
+                        throw new Error('Сетевая ошибка...');
+                    }
+                    else
+                    {
+                        alert('Полетное задание успешно отправлено!');
+                        console.log('Полетное задание отправлено, полученные данные:', data);
+                    }
+                })
+                .catch(error => {
+                    alert('Ошибка при отправке полетного задания.');
+                    console.error('Ошибка:', error);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
